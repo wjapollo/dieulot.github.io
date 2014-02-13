@@ -26,15 +26,13 @@
 
 <p class="warning"><strong>Upgrading from 2.0?</strong> In 2.1 blacklisting is now the default, see <a href="#whitelist_blacklist">Blacklist or whitelist</a> if your website is already using InstantClick.
 
-<h3>Preloading options</h3>
+<h3 id="preloading">Preloading</h3>
 
-<p>InstantClick has three levels of preloading.
-
-<h4>On hover</h4>
+<h4 id="hover">On hover</h4>
 
 <p>Preloading kicks in when a user hovers over a link. If the user has a decent connection and your pages don’t take too long to be served, pages will display instantly.
 
-<p>Include InstantClick and initialize it near the end of your pages.
+<p>Include InstantClick and initialize it near the end of your pages:
 
 <div id="gist8879571" class="gist">
 <div class="gist-file">
@@ -59,7 +57,7 @@
 </div>
 </div>
 
-<h4>On hover after a delay</h4>
+<h4 id="delay">On hover after a delay</h4>
 
 <p>If the user is still hovering over a link after a delay of your choice has passed, the page will start preloading.
 
@@ -86,7 +84,7 @@
 </div>
 </div>
 
-<h4>On mousedown</h4>
+<h4 id="mousedown">On mousedown</h4>
 
 <p>Preload when the user presses his mouse button (a click is when he releases it). This brings nearly zero overhead to your server and still bring a “magical” speed boost.
 
@@ -111,13 +109,13 @@
 </div>
 </div>
 
-<h3 id="whitelist_blacklist">Blacklist or whitelist</h3>
+<h3 id="blacklisting">Blacklisting (or whitelisting) links</h3>
 
-<p class="warning warning-dark">Before InstantClick 2.1, passing a <code>true</code> argument would enable <strong>blacklisting</strong>. Starting with InstantClick 2.1, this is now the opposite.
+<p class="warning warning-dark">Before InstantClick 2.1, passing a <code>true</code> argument would enable the <strong>blacklist</strong>. The blacklist is now the default. Passing <code>true</code> now enables <strong>whitelisting</strong>.
 
-<p>You can either use InstantClick by blacklisting (default) or whitelisting what it preloads.
+<p>You can restrict what links InstantClick preloads by either blacklisting (default) or whitelisting.
 
-<p>In general, you’ll use blacklisting when you start a website from scratch, or when your website consists of few pages; you’ll use whitelisting when your website is already complex.
+<p>In general, you’ll use blacklisting when you start a website from scratch, or when your website consists of only few pages; you’ll use whitelisting when your website is already done and complex.
 
 <p>What to blacklist, and to NOT whitelist:
 
@@ -127,7 +125,7 @@
   <li>Links pointing to a page with different styles/scripts in the <code>&lt;head&gt;</code>.
 </ul>
 
-<p>Some links cannot be preloaded:
+<p>Some links won’t be preloaded and cannot be whitelisted:
 
 <ul>
   <li>Links with a <code>target</code> or <code>download</code> attribute.
@@ -135,7 +133,7 @@
   <li>Links who points to an #anchor on the same page.
 </ul>
 
-<h4>Blacklisting</h4>
+<h4 id="black">Blacklist a link</h4>
 
 <p>To blacklist a link, add it a <code>data-no-instant</code> attribute.
 
@@ -158,7 +156,7 @@
 </div>
 </div>
 
-<h4>Whitelisting</h4>
+<h4 id="white">Whitelist a link</h4>
 
 <p>To enable whitelisting, pass a <code>true</code> argument to <code>InstantClick.init</code>.
 
@@ -206,11 +204,11 @@
 </div>
 </div>
 
-<h3>Dealing with scripts</h3>
+<h3 id="scripts">Dealing with scripts</h3>
 
 <p>Besides the heavier load on your server, the real price to make your website instant is that you’ll have to revisit how your scripts are architectured. Because InstantClick makes your website a single-page application, there’s no <code>DOMContentLoaded</code> firing on page changes anymore.
 
-<p>If there is a script in the body that you wish not to re-evaluate when InstantClick displays a page, add a <code>data-no-instant</code> attribute to it.
+<p>If there is a script in the body that you wish not to re-evaluate when InstantClick displays a page, add it a <code>data-no-instant</code> attribute.
 
 <div id="gist8879571" class="gist">
 <div class="gist-file">
